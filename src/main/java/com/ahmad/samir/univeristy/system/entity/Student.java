@@ -35,12 +35,12 @@ public class Student {
     private String lastName;
 
     @Column(
-            name = "Email",
+            name = "Emaillllllllll",
             nullable = false
     )
     private String email;
 
-    @Column(name = "Guardian")
-    private String guardian;
+    @Embedded
+    private Guardian guardian;
 
 }
