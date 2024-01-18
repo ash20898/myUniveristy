@@ -35,7 +35,7 @@ public class Student {
     private String lastName;
 
     @Column(
-            name = "Emaillllllllll",
+            name = "Email",
             nullable = false
     )
     private String email;

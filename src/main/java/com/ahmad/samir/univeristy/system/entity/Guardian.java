@@ -16,18 +16,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @AttributeOverrides({
         @AttributeOverride(
-                name = "guardianName",
+                name = "name",
                 column = @Column(name = "Guardian_Name")
         ),
         @AttributeOverride(
-                name = "guardianMobile",
+                name = "mobile",
                 column = @Column(name = "Guardian_Mobile")
         )
 }
 )
 public class Guardian {
 
-    private String guardianName;
+    private String name;
 
-    private String guardianMobile;
+    private String mobile;
 }
