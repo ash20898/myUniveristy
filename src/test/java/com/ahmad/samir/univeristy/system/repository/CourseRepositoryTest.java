@@ -24,7 +24,7 @@ class CourseRepositoryTest {
         Course course = Course.builder()
                 .title("DSA")
                 .credit(6)
-                .courseMaterial(courseMaterial)
+                //.courseMaterial(courseMaterial)
                 .build();
         courseRepository.save(course);
     }

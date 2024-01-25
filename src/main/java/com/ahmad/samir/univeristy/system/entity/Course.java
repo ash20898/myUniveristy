@@ -1,5 +1,7 @@
 package com.ahmad.samir.univeristy.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,9 +30,27 @@ public class Course {
     private String title;
 
     @OneToOne(
-            mappedBy = "course",
-            cascade = CascadeType.ALL
+            mappedBy = "course"
     )
     private CourseMaterial courseMaterial;
 
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            optional = false
+    )
+    @JoinColumn(
+            name = "teacher_Id",
+            referencedColumnName = "teacherId"
+    )
+    private Teacher teacher;
+
+    @JsonManagedReference
+    public CourseMaterial getCourseMaterial() {
+        return courseMaterial;
+    }
+
+    @JsonBackReference
+    public Teacher getTeacher() {
+        return teacher;
+    }
 }

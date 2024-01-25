@@ -2,6 +2,7 @@ package com.ahmad.samir.univeristy.system.repository;
 
 import com.ahmad.samir.univeristy.system.entity.Course;
 import com.ahmad.samir.univeristy.system.entity.CourseMaterial;
+import com.ahmad.samir.univeristy.system.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,15 +19,20 @@ class CourseMaterialRepositoryTest {
 
     @Test
     void addCourseMaterial(){
+        Teacher teacher = Teacher.builder()
+                .firstName("Ahmad")
+                .lastName("Na")
+                .build();
 
         Course course = Course.builder()
-                .credit(7)
-                .title("Ahmad Samir Hadhoud Course")
+                .credit(1)
+                .title("Math")
+                .teacher(teacher)
                 .build();
 
         CourseMaterial courseMaterial = CourseMaterial.builder()
-                .url("WWW.ahmadSamir.com")
-                .course(course)
+                .url("WWW.test2.com")
+                //.course(course)
                 .build();
 
         courseMaterialRepository.save(courseMaterial);

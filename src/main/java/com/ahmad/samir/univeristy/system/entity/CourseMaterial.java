@@ -1,5 +1,6 @@
 package com.ahmad.samir.univeristy.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,11 +29,16 @@ public class CourseMaterial {
     private String url;
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            optional = false
     )
     @JoinColumn(
             name = "Course_Id",
             referencedColumnName = "courseId"
     )
     private Course course;
+
+    @JsonBackReference
+    public Course getCourse() {
+        return course;
+    }
 }
