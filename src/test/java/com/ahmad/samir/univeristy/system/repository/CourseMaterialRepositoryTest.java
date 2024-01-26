@@ -32,7 +32,7 @@ class CourseMaterialRepositoryTest {
 
         CourseMaterial courseMaterial = CourseMaterial.builder()
                 .url("WWW.test2.com")
-                //.course(course)
+                .course(course)
                 .build();
 
         courseMaterialRepository.save(courseMaterial);

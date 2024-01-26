@@ -13,6 +13,7 @@ import lombok.*;
 @Table(
         name = "Courses"
 )
+@ToString(exclude = "teacher")
 public class Course {
 
     @Id
@@ -36,7 +37,7 @@ public class Course {
 
     @ManyToOne(
             cascade = CascadeType.ALL,
-            optional = false
+            fetch = FetchType.LAZY
     )
     @JoinColumn(
             name = "teacher_Id",
