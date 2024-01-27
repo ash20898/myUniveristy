@@ -3,6 +3,9 @@ package com.ahmad.samir.univeristy.system.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -42,5 +45,14 @@ public class Student {
 
     @Embedded
     private Guardian guardian;
+
+    @ManyToMany(mappedBy = "students")
+    private List<Course> courses;
+
+    public void addCourse(Course course){
+        if(courses == null)
+            courses = new ArrayList<>();
+        courses.add(course);
+    }
 
 }

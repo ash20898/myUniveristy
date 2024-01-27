@@ -2,6 +2,8 @@ package com.ahmad.samir.univeristy.system.repository;
 
 import com.ahmad.samir.univeristy.system.entity.Course;
 import com.ahmad.samir.univeristy.system.entity.CourseMaterial;
+import com.ahmad.samir.univeristy.system.entity.Student;
+import com.ahmad.samir.univeristy.system.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -60,5 +62,30 @@ class CourseRepositoryTest {
 
         List<Course> courses = courseRepository.findAll(firstPageWithTwoElements).getContent();
         System.out.println("Courses : " + courses);
+    }
+
+    @Test
+    void addCourseWithStudent(){
+
+        Student student = Student.builder()
+                .firstName("mo")
+                .lastName("met")
+                .email("moMet@gmail.com")
+                .build();
+        Teacher teacher = Teacher.builder()
+                .firstName("7at")
+                .lastName("kady")
+                .build();
+
+        Course course = Course.builder()
+                .title("physics")
+                .credit(2)
+                .teacher(teacher)
+                //.students(List.of(student))
+                .build();
+
+        course.addStudent(student);
+
+        courseRepository.save(course);
     }
 }

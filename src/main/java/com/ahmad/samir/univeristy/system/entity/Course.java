@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -44,6 +47,26 @@ public class Course {
             referencedColumnName = "teacherId"
     )
     private Teacher teacher;
+
+    @ManyToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinTable(
+            name = "Course_Student",
+            joinColumns = @JoinColumn(
+                    name = "course_Id"
+            ) ,
+            inverseJoinColumns = @JoinColumn(
+                    name = "student_Id"
+            )
+    )
+    private List<Student> students;
+
+    public void addStudent(Student student){
+        if( students == null)
+            students = new ArrayList<>();
+        students.add(student);
+    }
 
     @JsonManagedReference
     public CourseMaterial getCourseMaterial() {
